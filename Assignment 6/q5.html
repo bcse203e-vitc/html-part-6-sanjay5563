@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q5 - Password Match</title>
+</head>
+<body>
+  <h2>Password Match</h2>
+  <input type="password" id="pass" placeholder="Password"><br><br>
+  <input type="password" id="cpass" placeholder="Confirm Password"><br>
+  <div id="msg"></div>
+
+  <script>
+    const pass = document.getElementById("pass");
+    const cpass = document.getElementById("cpass");
+    const msg = document.getElementById("msg");
+
+    function checkMatch() {
+      if (pass.value && cpass.value) {
+        if (pass.value === cpass.value) {
+          msg.textContent = "Passwords match";
+          msg.style.color = "green";
+        } else {
+          msg.textContent = "Passwords do not match";
+          msg.style.color = "red";
+        }
+      } else {
+        msg.textContent = "";
+      }
+    }
+
+    pass.addEventListener("input", checkMatch);
+    cpass.addEventListener("input", checkMatch);
+  </script>
+</body>
+</html>

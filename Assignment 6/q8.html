@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q8 - Hex Color</title>
+</head>
+<body>
+  <h2>Hex Color Validation</h2>
+  <input type="text" id="color" placeholder="#FFFFFF">
+  <div id="msg"></div>
+  <div id="preview" style="width:50px; height:50px; border:1px solid black;"></div>
+
+  <script>
+    const input = document.getElementById("color");
+    const preview = document.getElementById("preview");
+    const msg = document.getElementById("msg");
+    const regex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+
+    input.addEventListener("input", () => {
+      if (regex.test(input.value)) {
+        msg.textContent = "Valid color!";
+        msg.style.color = "green";
+        preview.style.backgroundColor = input.value;
+      } else {
+        msg.textContent = "Invalid hex code!";
+        msg.style.color = "red";
+      }
+    });
+  </script>
+</body>
+</html>

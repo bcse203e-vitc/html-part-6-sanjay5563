@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q1 - Registration Form</title>
+  <style>
+    .error { color: red; font-size: 14px; }
+    .success { color: green; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h2>Registration Form</h2>
+  <form id="regForm">
+    <label>Name: <input type="text" id="name"></label>
+    <span id="nameErr" class="error"></span><br><br>
+
+    <label>Email: <input type="text" id="email"></label>
+    <span id="emailErr" class="error"></span><br><br>
+
+    <label>Password: <input type="password" id="password"></label>
+    <span id="passErr" class="error"></span><br><br>
+
+    <button type="submit" id="submitBtn" disabled>Submit</button>
+  </form>
+
+  <script>
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const submitBtn = document.getElementById("submitBtn");
+
+    const nameErr = document.getElementById("nameErr");
+    const emailErr = document.getElementById("emailErr");
+    const passErr = document.getElementById("passErr");
+
+    function validate() {
+      let valid = true;
+
+      if (name.value.trim() === "") {
+        nameErr.textContent = "Name required!";
+        valid = false;
+      } else {
+        nameErr.textContent = "";
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email.value)) {
+        emailErr.textContent = "Invalid email!";
+        valid = false;
+      } else {
+        emailErr.textContent = "";
+      }
+
+      const passRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+      if (!passRegex.test(password.value)) {
+        passErr.textContent = "Password must have 8 chars, 1 uppercase & 1 number!";
+        valid = false;
+      } else {
+        passErr.textContent = "";
+      }
+
+      submitBtn.disabled = !valid;
+    }
+
+    name.addEventListener("blur", validate);
+    email.addEventListener("blur", validate);
+    password.addEventListener("blur", validate);
+    document.getElementById("regForm").addEventListener("input", validate);
+  </script>
+</body>
+</html>

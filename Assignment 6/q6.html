@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q6 - Username Validation</title>
+</head>
+<body>
+  <h2>Username Validation</h2>
+  <form onsubmit="return validate()">
+    <input type="text" id="username" placeholder="Enter username">
+    <div id="msg"></div><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function validate() {
+      const regex = /^[a-zA-Z0-9_]{3,16}$/;
+      const user = document.getElementById("username").value;
+      const msg = document.getElementById("msg");
+      if (!regex.test(user)) {
+        msg.textContent = "Invalid username! Only letters, numbers, underscores (3-16 chars).";
+        msg.style.color = "red";
+        return false;
+      }
+      msg.textContent = "Valid username!";
+      msg.style.color = "green";
+      return true;
+    }
+  </script>
+</body>
+</html>

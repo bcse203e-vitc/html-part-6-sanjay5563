@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q10 - Dynamic Form Builder</title>
+</head>
+<body>
+  <h2>Dynamic Form Builder</h2>
+  <select id="inputType">
+    <option value="">Select Input Type</option>
+    <option value="text">Text</option>
+    <option value="email">Email</option>
+    <option value="password">Password</option>
+  </select>
+  <button onclick="addInput()">Add</button>
+
+  <form id="form"></form>
+
+  <script>
+    function addInput() {
+      const type = document.getElementById("inputType").value;
+      if (!type) return;
+
+      const input = document.createElement("input");
+      input.type = type;
+      input.placeholder = "Enter " + type;
+      input.addEventListener("blur", () => validate(input));
+      document.getElementById("form").appendChild(input);
+      document.getElementById("form").appendChild(document.createElement("br"));
+    }
+
+    function validate(input) {
+      let regex;
+      if (input.type === "email") regex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+      if (input.type === "text") regex = /^[A-Za-z\s]+$/;
+      if (input.type === "password") regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+      if (regex && !regex.test(input.value)) {
+        alert("Invalid " + input.type + " input!");
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q4 - Dynamic Hobby</title>
+</head>
+<body>
+  <h2>Hobbies Form</h2>
+  <form id="hobbyForm">
+    <div id="hobbyContainer">
+      <input type="text" name="hobby" placeholder="Enter hobby">
+    </div>
+    <button type="button" onclick="addHobby()">Add Hobby</button>
+  </form>
+
+  <script>
+    function addHobby() {
+      const regex = /^[A-Za-z\s]+$/;
+      const input = document.createElement("input");
+      input.type = "text";
+      input.name = "hobby";
+      input.placeholder = "Enter hobby";
+      input.addEventListener("blur", () => {
+        if (!regex.test(input.value)) {
+          alert("Hobby must contain only alphabets!");
+        }
+      });
+      document.getElementById("hobbyContainer").appendChild(document.createElement("br"));
+      document.getElementById("hobbyContainer").appendChild(input);
+    }
+  </script>
+</body>
+</html>

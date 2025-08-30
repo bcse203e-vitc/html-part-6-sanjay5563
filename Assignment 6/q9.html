@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q9 - Country Dropdown</title>
+</head>
+<body>
+  <h2>Continent & Country</h2>
+  <select id="continent">
+    <option value="">Select Continent</option>
+    <option value="Asia">Asia</option>
+    <option value="Europe">Europe</option>
+    <option value="America">America</option>
+  </select>
+
+  <select id="country">
+    <option value="">Select Country</option>
+  </select>
+
+  <script>
+    const data = {
+      Asia: ["India", "China", "Japan"],
+      Europe: ["France", "Germany", "Italy"],
+      America: ["USA", "Canada", "Brazil"]
+    };
+
+    document.getElementById("continent").addEventListener("change", function() {
+      const country = document.getElementById("country");
+      country.innerHTML = "<option value=''>Select Country</option>";
+      if (this.value && data[this.value]) {
+        data[this.value].forEach(c => {
+          const opt = document.createElement("option");
+          opt.value = c;
+          opt.textContent = c;
+          country.appendChild(opt);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q2 - Email Validation</title>
+  <style>
+    .error { color: red; }
+    .success { color: green; }
+  </style>
+</head>
+<body>
+  <h2>Email Validation</h2>
+  <form>
+    <label>Email: <input type="text" id="email"></label>
+    <div id="msg"></div>
+  </form>
+
+  <script>
+    const email = document.getElementById("email");
+    const msg = document.getElementById("msg");
+    const regex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+    email.addEventListener("blur", () => {
+      if (regex.test(email.value)) {
+        msg.textContent = "Valid Email!";
+        msg.className = "success";
+      } else {
+        msg.textContent = "Invalid Email!";
+        msg.className = "error";
+      }
+    });
+  </script>
+</body>
+</html>

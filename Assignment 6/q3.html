@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q3 - Phone Validation</title>
+</head>
+<body>
+  <h2>Phone Number Validation</h2>
+  <input type="text" id="phone" placeholder="Enter phone number">
+  <div id="msg"></div>
+
+  <script>
+    const phone = document.getElementById("phone");
+    const msg = document.getElementById("msg");
+    const regex = /^(\(\d{3}\)\s?\d{3}-\d{4}|\d{3}-\d{3}-\d{4})$/;
+
+    phone.addEventListener("input", () => {
+      if (regex.test(phone.value)) {
+        msg.textContent = "Valid phone number";
+        msg.style.color = "green";
+      } else {
+        msg.textContent = "Invalid format!";
+        msg.style.color = "red";
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q7 - Date Format</title>
+</head>
+<body>
+  <h2>Date Validation</h2>
+  <form onsubmit="return validate()">
+    <input type="text" id="date" placeholder="DD/MM/YYYY">
+    <button type="submit">Submit</button>
+  </form>
+  <div id="msg"></div>
+
+  <script>
+    function validate() {
+      const regex = /^\d{2}\/\d{2}\/\d{4}$/;
+      const date = document.getElementById("date").value;
+      if (!regex.test(date)) {
+        document.getElementById("msg").textContent = "Invalid date format!";
+        document.getElementById("msg").style.color = "red";
+        return false;
+      }
+      alert("Date accepted: " + date);
+      return true;
+    }
+  </script>
+</body>
+</html>
